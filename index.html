@@ -3,23 +3,27 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | Psyllium Rhythm</title>
-    <link rel="shortcut icon" href="TemplateData/favicon.ico">
-    <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="TemplateData/UnityProgress.js"></script>
+    <title>Unity WebGL Player | Title</title>
     <script src="Build/UnityLoader.js"></script>
     <script>
-      var unityInstance = UnityLoader.instantiate("unityContainer", "Build/Psyllium Rhythm ver.1.1.json", {onProgress: UnityProgress});
+      UnityLoader.instantiate("unityContainer", "Build/GameTitle.json");
     </script>
+    <link rel="stylesheet" href="Build/style.css" type="text/css">
   </head>
   <body>
-    <div class="webgl-content">
-      <div id="unityContainer" style="width: 600px; height: 800px"></div>
-      <div class="footer">
-        <div class="webgl-logo"></div>
-        <div class="fullscreen" onclick="unityInstance.SetFullscreen(1)"></div>
-        <div class="title">Psyllium Rhythm</div>
-      </div>
-    </div>
+    <div id="mobile" class="cover"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>
+    var div = document.getElementById('mobile');
+    if (navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)){
+      var mobileHeight = $(window).height();
+      var mobileWidth = $(window).width();
+      var tempData = '<center><div id="unityContainer" style="width: '+mobileWidth+'px; height: '+mobileHeight+'px; margin: auto"></div></center>'
+      div.innerHTML = tempData;
+    }
+    else {
+      div.innerHTML = '<center><div id="unityContainer" style="width: 360px; height: 640px; margin: auto"></div></center>';
+    }
+    </script>
   </body>
 </html>
